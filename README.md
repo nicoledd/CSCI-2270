@@ -19,6 +19,8 @@ HW7
 
 HW8 - Array implementation of a priority queue, simulating a restaurant
 
+HW9 - Zombie graph
+
 Recitations:
 
 REC1
