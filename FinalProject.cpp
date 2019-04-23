@@ -87,7 +87,8 @@ bool compare(suffix a, suffix b){
   // for the 2 suffixes, if the ASCII ranks for the first suffix char are equal
   //  - then compare the ASCII ranks for the second suffix char
   //  - otherwise, just compare the ASCII ranks for the first suffix char
-  return (a.rank[0] == b.rank[0]) ? (a.rank[1] < b.rank[1] ? true: false): (a.rank[0] < b.rank[0] ? true: false);
+  return (a.rank[0] == b.rank[0]) ? (a.rank[1] < b.rank[1] ? true: false):
+                                    (a.rank[0] < b.rank[0] ? true: false);
 }
 
 
@@ -142,7 +143,8 @@ vector<suffix> buildSuffixArray(string txt){
     // store the ASCII value of the second suffix character in rank[1]
     // - if the suffix is only one character long, meaning that the second
     //   suffix character doesn't exist, store rank[1] as -1
-    suffixInfoArr[txtIdx].rank[1] = ((txtIdx + 1) < txt.length()) ? (txt[txtIdx + 1] - 'a'): -1;
+    suffixInfoArr[txtIdx].rank[1] = ((txtIdx + 1) < txt.length())?
+                                      (txt[txtIdx + 1] - 'a'): -1;
 
     // store the identity of the suffix in 'string identity'
     //  - the suffixes from the first sequence will all be assigned 'blue'
@@ -174,10 +176,14 @@ vector<suffix> buildSuffixArray(string txt){
     originalIdxArr[suffixInfoArr[0].originalIndex] = 0;
 
     // assign rank[0] for remaining suffixes
-    for(int suffixInfoArrIdx = 1; suffixInfoArrIdx < txt.length(); suffixInfoArrIdx++){
+    for(int suffixInfoArrIdx = 1;
+      suffixInfoArrIdx < txt.length();suffixInfoArrIdx++){
 
       // if rank[0] and rank[1] are same for curr suffix and its previous suffix,
-      if(suffixInfoArr[suffixInfoArrIdx].rank[0] == prevRank && suffixInfoArr[suffixInfoArrIdx].rank[1] == suffixInfoArr[suffixInfoArrIdx - 1].rank[1]){
+      if(suffixInfoArr[suffixInfoArrIdx].rank[0] == prevRank
+        && suffixInfoArr[suffixInfoArrIdx].rank[1] ==
+        suffixInfoArr[suffixInfoArrIdx - 1].rank[1]){
+
         // then assign the same new rank to this curr suffix
         prevRank = suffixInfoArr[suffixInfoArrIdx].rank[0];
         suffixInfoArr[suffixInfoArrIdx].rank[0] = rank;
@@ -192,13 +198,18 @@ vector<suffix> buildSuffixArray(string txt){
       }
 
       // store in originalIdxArr[original index of the suffix], suffixInfoArrIdx
-      originalIdxArr[suffixInfoArr[suffixInfoArrIdx].originalIndex] = suffixInfoArrIdx;
+      originalIdxArr[suffixInfoArr[suffixInfoArrIdx].originalIndex] =
+      suffixInfoArrIdx;
     }
 
     // for each curr suffix, also assign rank[1]
-    for(int suffixInfoArrIdx = 0; suffixInfoArrIdx < txt.length(); suffixInfoArrIdx++){
+    for(int suffixInfoArrIdx = 0;
+      suffixInfoArrIdx < txt.length(); suffixInfoArrIdx++){
+
       int nextIndex = suffixInfoArr[suffixInfoArrIdx].originalIndex + k / 2;
-      suffixInfoArr[suffixInfoArrIdx].rank[1] = (nextIndex < txt.length()) ? suffixInfoArr[originalIdxArr[nextIndex]].rank[0] : -1;
+
+      suffixInfoArr[suffixInfoArrIdx].rank[1] = (nextIndex < txt.length()) ?
+                      suffixInfoArr[originalIdxArr[nextIndex]].rank[0] : -1;
     }
 
     // sort suffixes according to first k characters
@@ -210,7 +221,8 @@ vector<suffix> buildSuffixArray(string txt){
   // now that the suffixInfoArr[] is sorted alphabetically, push all of these
   // sorted suffixes into the vector suffixArr, which we will return
   for(int suffixArrIdx = 0; suffixArrIdx < txt.length(); suffixArrIdx++){
-    suffixArr.push_back(suffix(suffixInfoArr[suffixArrIdx].originalIndex, suffixInfoArr[suffixArrIdx].identity));
+    suffixArr.push_back(suffix(suffixInfoArr[suffixArrIdx].originalIndex,
+                               suffixInfoArr[suffixArrIdx].identity));
   }
 
   // return the final constructed suffix array
@@ -246,7 +258,8 @@ vector<int> buildLCP(string txt, vector<suffix> suffixArr){
   int lcpValue = 0;
 
   // process all suffixes one by one starting from first suffix
-  for(int inverseSuffixArrIdx = 0; inverseSuffixArrIdx < txt.length(); inverseSuffixArrIdx++){
+  for(int inverseSuffixArrIdx = 0;
+    inverseSuffixArrIdx < txt.length(); inverseSuffixArrIdx++){
 
     // if the current suffix is at n - 1, we don't have next substring to
     // compare with, which means the lcp value is simply zero (undefined)
@@ -257,10 +270,14 @@ vector<int> buildLCP(string txt, vector<suffix> suffixArr){
 
     // nextIdx is the original index of the next suffixArr substring,
     // to be compared with curr suffixArr substring
-    int nextIdx = suffixArr[inverseSuffixArr[inverseSuffixArrIdx] + 1].originalIndex;
+    int nextIdx =
+    suffixArr[inverseSuffixArr[inverseSuffixArrIdx] + 1].originalIndex;
 
     // start matching from k'th index, since at least k - 1 characters will match
-    while(inverseSuffixArrIdx + lcpValue < txt.length() && nextIdx + lcpValue < txt.length() && txt[inverseSuffixArrIdx + lcpValue] == txt[nextIdx + lcpValue]){
+    while(inverseSuffixArrIdx + lcpValue < txt.length()
+          && nextIdx + lcpValue < txt.length()
+          && txt[inverseSuffixArrIdx + lcpValue] == txt[nextIdx + lcpValue]){
+
       lcpValue++;
     }
 
@@ -369,7 +386,9 @@ void printArrays(vector<int> lcpArr, vector<suffix> suffixArr, string txt){
   cout << "LCP value - suffix - identity - index\n";
   for(int arrIdx = 0; arrIdx < txt.length(); arrIdx++){
     cout << lcpArr[arrIdx] << " - ";
-    for(int txtIdx = suffixArr[arrIdx].originalIndex; txt[txtIdx] != '\0'; txtIdx++){
+    for(int txtIdx = suffixArr[arrIdx].originalIndex;
+      txt[txtIdx] != '\0'; txtIdx++){
+
       cout << txt[txtIdx];
     }
     cout << " - " << suffixArr[arrIdx].identity << " - " << arrIdx << "\n";
@@ -634,7 +653,8 @@ HashTable::~HashTable(){
 // bool allIdentitiesInWindow() ////////////////////////////////////////////////
 // - if all identities are within this particular window slide, return true
 // - else if NOT all identites within this window slide, return false
-bool allIdentitiesInWindow(vector<suffix> suffixArr, int windowStartIdx, int windowEndIdx, HashTable &identityTable){
+bool allIdentitiesInWindow(vector<suffix> suffixArr, int windowStartIdx,
+                            int windowEndIdx, HashTable &identityTable){
 
   // before analyzing this particular window slide, initialize all identity
   // "counts" in hash table to zero
@@ -683,7 +703,8 @@ int smallestIdx(int windowStartIdx, int windowEndIdx, vector<int> lcpArr){
 //   the 2 sequences
 // - uses the largest lcp value to find and return the 'longest
 //   common substring'
-string windowSlide(vector<int> lcpArr, vector<suffix> suffixArr, string txt, HashTable &identityTable){
+string windowSlide(vector<int> lcpArr, vector<suffix> suffixArr,
+                  string txt, HashTable &identityTable){
 
   // in order to implement a 'sliding window', we need to know the start
   // index and the end index of that window
@@ -711,13 +732,18 @@ string windowSlide(vector<int> lcpArr, vector<suffix> suffixArr, string txt, Has
   while(windowEndIdx < lcpArr.size() - 1){
 
     // increment windowEndIdx, until all identities are in this window
-    while(allIdentitiesInWindow(suffixArr, windowStartIdx, windowEndIdx, identityTable) == false && windowEndIdx < lcpArr.size() - 1){
+    while(allIdentitiesInWindow(suffixArr, windowStartIdx,
+          windowEndIdx, identityTable) == false
+          && windowEndIdx < lcpArr.size() - 1){
+
       windowEndIdx++;
     }
 
     // increment windowStartIdx, until NOT all identities are in this window
     windowStartIdx--;
-    while(allIdentitiesInWindow(suffixArr, windowStartIdx, windowEndIdx, identityTable) == true){
+    while(allIdentitiesInWindow(suffixArr, windowStartIdx,
+          windowEndIdx, identityTable) == true){
+
       windowStartIdx++;
     }
 
@@ -747,7 +773,9 @@ string windowSlide(vector<int> lcpArr, vector<suffix> suffixArr, string txt, Has
   // - STOP READING AT: the number of characters we read in the string is equal
   //   to the VALUE at the LCP INDEX of the 'smallest non-zero lcp value'
   int numCharsRead = 0;
-  for(int txtIdx = suffixArr[foundIdx].originalIndex; numCharsRead < lcpArr[foundIdx]; txtIdx++){
+  for(int txtIdx = suffixArr[foundIdx].originalIndex;
+      numCharsRead < lcpArr[foundIdx]; txtIdx++){
+
     if(isalpha(txt[txtIdx])){
       longestCommonSubstring += txt[txtIdx];
     }
@@ -763,7 +791,7 @@ string windowSlide(vector<int> lcpArr, vector<suffix> suffixArr, string txt, Has
 void displayMenu(){
   cout << "========== Imaginary Species Database Menu ======================\n";
   cout << "1. Print all species\n";
-  cout << "2. Find the species that is most similar to your favorite\n";
+  cout << "2. Find the species that is most similar to your favorite species\n";
   cout << "3. Quit\n";
 }
 
@@ -875,6 +903,7 @@ int main(int argc, char *argv[]){
 
       // if favorite species doesn't exist in the database, break
       if(favSpeciesIdx == -1){
+        cout << "Invalid input, please try again\n\n";
         break;
       }
 
@@ -889,17 +918,22 @@ int main(int argc, char *argv[]){
         if(favSpeciesIdx != compareSpeciesIdx){
 
           // concatenate 2 adjacent sequences
-          txt = concatenateStrings(sequencesArr[favSpeciesIdx], sequencesArr[compareSpeciesIdx]);
+          txt = concatenateStrings(sequencesArr[favSpeciesIdx],
+                sequencesArr[compareSpeciesIdx]);
 
           // build suffix array and lcp array for txt
           vector<suffix> suffixArr = buildSuffixArray(txt);
           vector<int> lcpArr = buildLCP(txt, suffixArr);
 
           // find temp longest common substring
-          tempLongestCommonSubstring = windowSlide(lcpArr, suffixArr, txt, identityTable);
+          tempLongestCommonSubstring = windowSlide(lcpArr, suffixArr,
+                                      txt, identityTable);
 
           // find actual longest common substring
-          if(compareSpeciesIdx == 1 || tempLongestCommonSubstring.length() > longestCommonSubstring.length()){
+          if(compareSpeciesIdx == 1
+            || tempLongestCommonSubstring.length()
+            > longestCommonSubstring.length()){
+
             longestCommonSubstring = tempLongestCommonSubstring;
             foundIdx = compareSpeciesIdx;
           }
@@ -909,8 +943,10 @@ int main(int argc, char *argv[]){
       }
 
       // print results
-      cout << "The species that is most similar is: " << speciesArr[foundIdx] << "\n";
-      cout << "The longest common substring is " << longestCommonSubstring << "\n\n";
+      cout << "The species that is most similar is: " << speciesArr[foundIdx];
+      cout << "\n";
+      cout << "The longest common substring is: " << longestCommonSubstring;
+      cout << "\n\n";
 
       // re-initialize variables
       favSpecies = "";
