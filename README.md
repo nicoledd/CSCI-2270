@@ -1,6 +1,10 @@
 # CSCI-2700
 Homework from CSCI-2700 Data Structures at CU Boulder, Spring 2019
 
+HW1 - Insert Number Into Sorted Array
+
+HW2 - Dynamic Array
+
 HW3 - Linked List: Country network using linked list
 
 HW4 - Queue and Stack
