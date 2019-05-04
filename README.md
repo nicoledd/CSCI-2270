@@ -1,13 +1,9 @@
 # CSCI-2700
 Homework from CSCI-2700 Data Structures at CU Boulder, Spring 2019
 
-HW1 - Bubble sort an array of integers
-
-HW2 - Reads chapter 1 of Harry Potter, and outputs the most used words in that chapter, not including the most common words in the English language
-
 HW3 - Linked List: Country network using linked list
 
-HW4 -
+HW4 - Queue and Stack
 
 HW5 - Binary Search Tree: Creates a binary search tree of movies
 
