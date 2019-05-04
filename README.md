@@ -1,11 +1,5 @@
 # CSCI-2700
-Homework from CSCI-2700 Data Structures at CU Boulder
-
-Final Project - The Longest Common Substring Problem
-
-Uses a suffix array, longest common prefix (lcp) array, hash table, and a window-sliding algorithm to find the longest-common-substring between 2 given strings. (Sequences.txt is associated with this program)
-
-Homeworks:
+Homework from CSCI-2700 Data Structures at CU Boulder, Spring 2019
 
 HW1 - Bubble sort an array of integers
 
