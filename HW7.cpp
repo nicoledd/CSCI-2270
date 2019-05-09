@@ -3,7 +3,7 @@
 OBJECTIVES
 1. Use a hash function
 2. Store data in a chained hash table (Separate Chaining)
-2. Search for data in a hash table */
+3. Search for data in a hash table */
 
 
 
