@@ -8,7 +8,7 @@
   - HW6.hpp is a header file that is included in HW6.cpp
   - HW6.csv contains a list of movies titles & their respective rating, ranking, & release date
 - How to compile:
-  g++ std=c++11 HW6.cpp
+  g++ -std=c++11 HW6.cpp
   ./a HW6.csv
 */
 
