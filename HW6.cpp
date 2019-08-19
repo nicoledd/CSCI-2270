@@ -1,8 +1,14 @@
-/* Assignment 6 - Binary Search Trees II
+/* Assignment 6 - Binary Search Trees II */
 
-OBJECTIVES
-1. Delete nodes in a BST
-2. Create a super data structure combining BST and LL */
+
+
+/* README
+- there are many other files associated with this program
+  - HW6.pdf gives a detailed explanation of the purpose of this program
+  - HW6.hpp is a header file that is included in HW6.cpp
+  - HW6.csv contains a list of movies titles & their respective rating, ranking, & release date
+- when running this program, know that HW6.csv is a command line argument
+*/
 
 
 
