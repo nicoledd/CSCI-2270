@@ -3,11 +3,13 @@
 
 
 /* README
-- there are many other files associated with this program
+- There are many other files associated with this program
   - HW6.pdf gives a detailed explanation of the purpose of this program
   - HW6.hpp is a header file that is included in HW6.cpp
   - HW6.csv contains a list of movies titles & their respective rating, ranking, & release date
-- when running this program, know that HW6.csv is a command line argument
+- How to compile:
+  g++ std=c++11 HW6.cpp
+  ./a HW6.csv
 */
 
 
