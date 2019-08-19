@@ -1,25 +1,20 @@
 // 2019.04.20
 // FINAL PROJECT FOR DATA STRUCTURES
 
-/* WHAT THIS PROGRAM DOES //////////////////////////////////////////////////////
-
-  - reads Sequences.txt, which consists of a list of species and their
-    corresponding genome sequences, in the following format:
-    [species name] [genome sequence]
-
-  - asks the user for their favorite species, and outputs:
-    1) the name of the species that shares the longest-common-substring
-       with the user's favorite species
-    2) the longest-common-substring that is shared between the user's
-       favorite species, and the most similar species in the database
-
-  - data structures utilized:
-    hash table, suffix array, longest-common-prefix (lcp) array
-
-*/ /* HOW TO COMPILE ///////////////////////////////////////////////////////////
-  Type the following into the command prompt:
-  g++ std=c++11 FinalProject.cpp
-  ./a Sequences.txt
+/* README
+  - Another file associated with this program is Sequences.txt
+  - What does this program do?
+    - Sequences.txt consists a list of imaginary species & their genome
+      sequences in the following format: [name] [sequence]
+    - The program will ask you what your favorite species is
+    - The program will output the following:
+      1) The name of the species that shares the longest-common-substring
+        with your favorite species
+      2) The longest-common-substring that is shared between your favorite
+        species, and the most similar species in the database
+  - How to compile:
+    g++ std=c++11 FinalProject.cpp
+    ./a Sequences.txt
 */
 
 
