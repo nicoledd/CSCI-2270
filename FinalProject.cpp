@@ -13,7 +13,7 @@
       2) The longest-common-substring that is shared between your favorite
         species, and the most similar species in the database
   - How to compile:
-    g++ std=c++11 FinalProject.cpp
+    g++ -std=c++11 FinalProject.cpp
     ./a Sequences.txt
 */
 
