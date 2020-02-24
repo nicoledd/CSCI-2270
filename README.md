@@ -19,4 +19,4 @@ HW8 - Priority Queue/Heap
 
 HW9 - Graphs
 
-Final Project - Longest Common Substring Problem (using Suffix Arrays & LCP Arrays)
+Final Project - Longest Common Substring Problem (using Suffix Arrays & LCP Arrays), inspired by https://www.youtube.com/watch?v=zqKlL3ZpTqs&list=PLDV1Zeh2NRsCQ_Educ7GCNs3mvzpXhHW5
